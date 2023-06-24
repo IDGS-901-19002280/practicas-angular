@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-primary">
+      <h1 class="mb-4 text-white">Calculadora de Resistencias</h1>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="select1">Banda 1</label>
+        <select id="select1" class="form-control" [(ngModel)]="banda1">
+          <option *ngFor="let color of for_Colors" [style.background-color]="color.hex"
+          [style.color]="color.text" [value]="color.band_value">{{ color.color }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="select2">Banda 2</label>
+        <select id="select2" class="form-control" [(ngModel)]="banda2">
+          <option *ngFor="let color of for_Colors" [style.background-color]="color.hex"
+          [style.color]="color.text" [value]="color.band_value">{{ color.color }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="select3">Multiplicador</label>
+        <select id="select3" class="form-control" [(ngModel)]="multi">
+          <option *ngFor="let color of for_Colors" [style.background-color]="color.hex"
+          [style.color]="color.text" [value]="color.multiplicator">{{ color.color }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="select4">Tolerancia</label>
+        <select id="select4" class="form-control" [(ngModel)]="tole">
+          <option *ngFor="let color of for_Tolerancia" [style.background-color]="color.hex"
+          [style.color]="color.text" [value]="color.tolerancia">{{ color.color }}</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" (click)="calcular()">Calcular</button>
+
+      <h3 class="mt-4">{{ resultado }}</h3>
+    </div>
+  </div>
+</div>

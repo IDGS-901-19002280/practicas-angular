@@ -1,0 +1,31 @@
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+.card-header bg-primary{
+  background-color: #1eff00;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}

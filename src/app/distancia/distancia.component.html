@@ -1,0 +1,45 @@
+<div  class="container text-center">
+  <h2 >Calculadora de Distancia</h2>
+
+  <div class="input-container">
+    <mat-form-field>
+      <mat-label>Punto 1:</mat-label>
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="punto1.x"
+        placeholder="Coordenada X"
+      />
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="punto1.y"
+        placeholder="Coordenada Y"
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="input-container">
+    <mat-form-field>
+      <mat-label>Punto 2:</mat-label>
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="punto2.x"
+        placeholder="Coordenada X"
+      />
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="punto2.y"
+        placeholder="Coordenada Y"
+      />
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="calcularDistancia()">
+    Calcular
+  </button>
+
+  <p class="result">La distancia entre los dos puntos es: {{ distancia }}</p>
+</div>
