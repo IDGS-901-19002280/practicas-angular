@@ -1,5 +1,7 @@
 .input-container {
   margin-bottom: 10px;
+  margin-top: 5px;
+  position: relative;
 }
 
 .result {
@@ -8,25 +10,23 @@
   font-size: 20px;
 }
 
-.Calculadora{
-  margin-top: 10px;
-  font-weight: bold;
-  font-size: 20px;
+p{
+  text-align: justify !important;
+  font-size: 45px;
+}
+h2{
+  text-align: justify !important;
+  font-size: 35px;
+  display: contents;
+}
+h4{
+  text-align: justify !important;
+  font-size: 45px;
+}
+
+.container {
+  margin-top: 20px;
   margin-right: 5px;
   margin-bottom: 5px;
   display: inline-grid;
-  align-items: center;
 }
-
-h2, h4, p{
-    text-align: justify !important ;
-    font-size: 45px;
-  }
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-  }

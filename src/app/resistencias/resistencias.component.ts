@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { colors, tolerancias } from './colores';
+import { colors, resistencias } from './colores';
 
 @Component({
   selector: 'app-resistencias',
@@ -8,18 +8,47 @@ import { colors, tolerancias } from './colores';
 })
 export class ResistenciasComponent {
   for_Colors = colors
-  for_Tolerancia = tolerancias
+  for_Resistencias = resistencias
 
-  resultado = ''
+  resultado! : number
   banda1! : string
   banda2! : string
-  multi! : number
-  tole! : string
+  multi! : string
+  resis! : number
+  valmen! : number
+  valmax! : number
 
   calcular(){
-    let result = parseInt(this.banda1 + this.banda2) * this.multi
+    this.resultado = parseInt(this.banda1 + this.banda2) * Number(this.multi)
+    this.valmen = this.resultado - (this.resultado * (this.resis/100))
+    this.valmax = this.resultado + (this.resultado * (this.resis/100))
+  }
 
-    this.resultado = 'Valor resistencia ' + result + ' ohms.'
-    + ' Con una tolerancia de '
+  get_Band_Color(bandValue : string, hex : boolean = false) : string {
+    var bv : number = Number(bandValue)
+    for (var i = 0; i < colors.length; i++) {
+        if (colors[i].band_value === bv || colors[i].multiplicator ===bv) {
+            if (hex){
+              return colors[i].hex
+            } else {
+              return colors[i].color
+            }
+        }
+    }
+    return 'white'
+  }
+
+  get_Resis_Color(bandValue : number, hex : boolean = false) : string {
+    bandValue = Number(bandValue)
+    for (var i = 0; i < resistencias.length; i++) {
+        if (resistencias[i].tolerancia === bandValue) {
+            if (hex){
+              return resistencias[i].hex
+            } else {
+              return resistencias[i].color
+            }
+        }
+    }
+    return 'white'
   }
 }
