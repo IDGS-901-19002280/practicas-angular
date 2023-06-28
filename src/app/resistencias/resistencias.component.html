@@ -1,70 +1,76 @@
-<div class="my-content">
+<div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-lg-6">
       <div class="card">
         <div class="card-body">
-          <h1 class="mb-4">Resistencias</h1>
+          <b><h1 class="mb-4">Resistencias</h1></b>
           <hr>
 
           <div class="mb-3">
-            <label for="select1" class="form-label">Banda #1</label>
+            <label for="select1" class="form-label">Banda 1</label>
             <select id="select1" class="form-select" [(ngModel)]="banda1">
-              <option *ngFor="let color of for_Colors" [style.background-color]="color.hex" [style.color] = "color.text" [value] = "color.band_value">{{ color.color }}</option>
+              <option *ngFor="let color of for_Colors" [style.background-color]="color.hex" [style.color]="color.text" [value]="color.band_value">{{ color.color }}</option>
             </select>
           </div>
 
           <div class="mb-3">
-            <label for="select2" class="form-label">Banda #2</label>
+            <label for="select2" class="form-label">Banda 2</label>
             <select id="select2" class="form-select" [(ngModel)]="banda2">
-              <option *ngFor="let color of for_Colors" [style.background-color]="color.hex" [style.color] = "color.text" [value] = "color.band_value">{{ color.color }}</option>
+              <option *ngFor="let color of for_Colors" [style.background-color]="color.hex" [style.color]="color.text" [value]="color.band_value">{{ color.color }}</option>
             </select>
           </div>
 
           <div class="mb-3">
             <label for="select3" class="form-label">Multiplicador</label>
             <select id="select3" class="form-select" [(ngModel)]="multi">
-              <option *ngFor="let color of for_Colors" [style.background-color]="color.hex" [style.color] = "color.text" [value] = "color.multiplicator">{{ color.color }}</option>
+              <option *ngFor="let color of for_Colors" [style.background-color]="color.hex" [style.color]="color.text" [value]="color.multiplicator">{{ color.color }}</option>
             </select>
           </div>
 
           <div class="mb-3">
-            <label for="select3" class="form-label">Tolerancia</label>
-            <select id="select3" class="form-select" [(ngModel)]="resis">
-              <option *ngFor="let resis of for_Resistencias" [style.background-color]="resis.hex" [style.color] = "resis.text" [value] = "resis.tolerancia">{{ resis.color }}</option>
+            <label for="select4" class="form-label">Tolerancia</label>
+            <select id="select4" class="form-select" [(ngModel)]="resis">
+              <option *ngFor="let resis of for_Resistencias" [style.background-color]="resis.hex" [style.color]="resis.text" [value]="resis.tolerancia">{{ resis.color }}</option>
             </select>
           </div>
         </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col-lg-6">
       <!-- Agrega aquí los elementos adicionales que desees -->
     </div>
   </div>
 
-  <div class="row">
-    <div class="mb-3">
-      <button class="btn btn-danger" (click)="calcular()">Enviar</button>
+  <div class="row mt-4">
+    <div class="col">
+      <button class="btn btn-primary" (click)="calcular()">Enviar</button>
     </div>
+  </div>
 
-    <div class="mb-3">
-      <table class="table">
+  <div class="row mt-4">
+    <div class="col">
+      <table class="table table-striped">
         <thead class="thead-dark">
-          <th class="col">Banda 1</th>
-          <th class="col">Banda 2</th>
-          <th class="col">Multiplicador</th>
-          <th class="col">Valor</th>
-          <th class="col">+</th>
-          <th class="col">-</th>
-          <th class="col">Tolerancia</th>
+          <tr>
+            <th scope="col">Banda 1</th>
+            <th scope="col">Banda 2</th>
+            <th scope="col">Multiplicador</th>
+            <th scope="col">Valor</th>
+            <th scope="col">+</th>
+            <th scope="col">-</th>
+            <th scope="col">Tolerancia</th>
+          </tr>
         </thead>
         <tbody>
-          <td [style.background-color]="get_Band_Color(banda1, true)" [style.color]="get_Band_Color(banda1)">{{banda1}}</td>
-          <td [style.background-color]="get_Band_Color(banda2, true)" [style.color]="get_Band_Color(banda2)">{{banda2}}</td>
-          <td [style.background-color]="get_Band_Color(multi, true)" [style.color]="get_Band_Color(multi)">{{multi}}</td>
-          <td>{{resultado}}</td>
-          <td>{{valmen}}</td>
-          <td>{{valmax}}</td>
-          <td [style.background-color]="get_Resis_Color(resis, true)" [style.color]="get_Resis_Color(resis)">{{resis}}</td>
+          <tr>
+            <td [style.background-color]="get_Band_Color(banda1, true)" [style.color]="get_Band_Color(banda1)">{{banda1}}</td>
+            <td [style.background-color]="get_Band_Color(banda2, true)" [style.color]="get_Band_Color(banda2)">{{banda2}}</td>
+            <td [style.background-color]="get_Band_Color(multi, true)" [style.color]="get_Band_Color(multi)">{{multi}}</td>
+            <td>{{resultado}}</td>
+            <td>{{valmen}}</td>
+            <td>{{valmax}}</td>
+            <td [style.background-color]="get_Resis_Color(resis, true)" [style.color]="get_Resis_Color(resis)">{{resis}}</td>
+          </tr>
         </tbody>
       </table>
     </div>
