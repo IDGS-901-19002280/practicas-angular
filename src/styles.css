@@ -4,7 +4,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .specialhr{
-    box-shadow: 6px 5px 34px -4px rgba(0,0,0,0.4);
+    box-shadow: 6px 5px 34px -4px rgba(4, 8, 248, 0.568);
     background-color: white !important;
     margin: 0 !important;
     padding: 0.5rem;

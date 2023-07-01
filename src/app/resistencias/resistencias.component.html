@@ -1,78 +1,78 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="card">
-        <div class="card-body">
-          <b><h1 class="mb-4">Resistencias</h1></b>
-          <hr>
-
-          <div class="mb-3">
-            <label for="select1" class="form-label">Banda 1</label>
-            <select id="select1" class="form-select" [(ngModel)]="banda1">
-              <option *ngFor="let color of for_Colors" [style.background-color]="color.hex" [style.color]="color.text" [value]="color.band_value">{{ color.color }}</option>
-            </select>
+<div class="container mt-3">
+    <div class="row justify-content-center">
+       <div class="col-md-6">
+          <div class="card">
+             <div class="card-header">
+                <h4>Calculadora Resistencias</h4>
+             </div>
+ 
+             <div class="card-body">
+                <form #f="ngForm">
+                   <div class="row">
+                      <div class="form-group col-md-6">
+                         <label for="color1">Color de la banda 1:</label>
+                         <select class="form-control" id="color1" name="color1" [(ngModel)]="resistor.color1" required>
+                            <option *ngFor="let color of colorList">{{ color }}</option>
+                         </select>
+                      </div>
+                      <div class="form-group col-md-6">
+                         <label for="color2">Color de la banda 2:</label>
+                         <select class="form-control" id="color2" name="color2" [(ngModel)]="resistor.color2" required>
+                            <option *ngFor="let color of colorList">{{ color }}</option>
+                         </select>
+                      </div>
+                   </div>
+                   <div class="form-group mt-4">
+                      <label for="multiplier">Multiplicador:</label>
+                      <select class="form-control" id="multiplier" name="multiplier" [(ngModel)]="resistor.multiplier" required>
+                         <option *ngFor="let multiplier of multiplierList" [value]="multiplier.value" >
+                            {{ multiplier.label }}
+                         </option>
+                         
+                      </select>
+                   </div>
+                   <div class="form-group mt-4">
+                      <label for="tolerance">Tolerancia:</label>
+                      <select class="form-control" id="tolerance" name="tolerance" [(ngModel)]="resistor.tolerance" required>
+                        <option *ngFor="let tolerance of toleranceList" [value]="tolerance.value">
+                            {{ tolerance.label }} 
+                         </option>
+                      </select>
+                   </div>
+                   <button type="button" class="btn btn-block btn-primary mt-3" (click)="calculate()">Calcular</button>
+                   
+                </form>
+                <br>
+                <div>
+                  
+                   <table class="table table-bordered table-hover text-center" *ngIf="result">
+                      <thead>
+                         <tr>
+                            <th>Color 1 </th>
+                            <th>Color 2</th>
+                            <th>Multiplicador</th>
+                            <th>Tolerancia</th>
+                            <th>Resistencia</th>
+                            <th>+</th>
+                            <th>-</th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                         <tr>
+                           <td [ngClass]="getColor(resistor.color1) ">{{ resistor.color1 }}</td>
+                            <td [ngClass]="getColor(resistor.color2) " >{{ resistor.color2 }}</td>
+                            <td [ngClass]="getMultiplierColor(resistor.multiplier)">{{ resistor.multiplier }}</td>
+                            <td [ngClass]="getToleranceColor(resistor.tolerance)">{{ resistor.tolerance }} %</td>
+                            <td class="font-weight-bold">{{ calculatedResistance }} Ohm</td>
+                            <td class="font-weight-bold">{{resistor.max}}</td>
+                            <td class="font-weight-bold">{{resistor.min}}</td>
+                         </tr>
+                      </tbody>
+                   </table>
+                </div>
+             </div>
           </div>
-
-          <div class="mb-3">
-            <label for="select2" class="form-label">Banda 2</label>
-            <select id="select2" class="form-select" [(ngModel)]="banda2">
-              <option *ngFor="let color of for_Colors" [style.background-color]="color.hex" [style.color]="color.text" [value]="color.band_value">{{ color.color }}</option>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label for="select3" class="form-label">Multiplicador</label>
-            <select id="select3" class="form-select" [(ngModel)]="multi">
-              <option *ngFor="let color of for_Colors" [style.background-color]="color.hex" [style.color]="color.text" [value]="color.multiplicator">{{ color.color }}</option>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label for="select4" class="form-label">Tolerancia</label>
-            <select id="select4" class="form-select" [(ngModel)]="resis">
-              <option *ngFor="let resis of for_Resistencias" [style.background-color]="resis.hex" [style.color]="resis.text" [value]="resis.tolerancia">{{ resis.color }}</option>
-            </select>
-          </div>
-        </div>
-      </div>
+       </div>
     </div>
-    <div class="col-lg-6">
-      <!-- Agrega aquí los elementos adicionales que desees -->
-    </div>
-  </div>
-
-  <div class="row mt-4">
-    <div class="col">
-      <button class="btn btn-primary" (click)="calcular()">Enviar</button>
-    </div>
-  </div>
-
-  <div class="row mt-4">
-    <div class="col">
-      <table class="table table-striped">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Banda 1</th>
-            <th scope="col">Banda 2</th>
-            <th scope="col">Multiplicador</th>
-            <th scope="col">Valor</th>
-            <th scope="col">+</th>
-            <th scope="col">-</th>
-            <th scope="col">Tolerancia</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td [style.background-color]="get_Band_Color(banda1, true)" [style.color]="get_Band_Color(banda1)">{{banda1}}</td>
-            <td [style.background-color]="get_Band_Color(banda2, true)" [style.color]="get_Band_Color(banda2)">{{banda2}}</td>
-            <td [style.background-color]="get_Band_Color(multi, true)" [style.color]="get_Band_Color(multi)">{{multi}}</td>
-            <td>{{resultado}}</td>
-            <td>{{valmen}}</td>
-            <td>{{valmax}}</td>
-            <td [style.background-color]="get_Resis_Color(resis, true)" [style.color]="get_Resis_Color(resis)">{{resis}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+ </div>
+ 

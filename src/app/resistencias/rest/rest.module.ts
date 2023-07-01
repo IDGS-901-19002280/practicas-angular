@@ -3,18 +3,17 @@ import { CommonModule } from '@angular/common';
 import { ResistenciasComponent } from '../resistencias.component';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [
     ResistenciasComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ResistenciasComponent,
   ],
   exports: [
-      ResistenciasComponent
-    ]
+
+  ]
 })
 export class RestModule { }
