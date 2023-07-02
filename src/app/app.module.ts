@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
@@ -8,6 +8,8 @@ import { ResistenciasComponent } from './resistencias/resistencias.component';
 import { FormsModule } from '@angular/forms';
 import { PizzasModule } from './pizzas/pizzas.module';
 import { DistanciaModule } from './distancia/distancia.module';
+import { CineComponent } from './cine/cine.component';
+import { CineModule } from './cine/cine.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { DistanciaModule } from './distancia/distancia.module';
     FormsModule,
     BrowserAnimationsModule,
     PizzasModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CineModule
 
   ],
   providers: [],

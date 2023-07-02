@@ -1,0 +1,65 @@
+<div class="container">
+  <h2>Cine</h2>
+  <form [formGroup]="cineForm" (ngSubmit)="calcularValorPagar()">
+    <div class="form-group">
+      <label for="nombreCliente">Nombre del cliente:</label>
+      <input type="text" id="nombreCliente" class="form-control" formControlName="nombreCliente">
+    </div>
+
+
+    <div class="form-group">
+      <label for="cantidadBoletos">Cantidad de boletos:</label>
+      <input
+        type="number"
+        id="cantidadBoletos"
+        class="form-control"
+        formControlName="cantidadBoletos"
+      />
+      <div
+        *ngIf="
+          cineForm.get('cantidadBoletos')?.invalid &&
+          cineForm.get('cantidadBoletos')?.touched
+        "
+        class="text-danger"
+      >
+        Solo se pueden comprar hasta 7 boletos por persona.
+      </div>
+    </div>
+
+    <div class="form-check">
+      <input
+        type="checkbox"
+        id="usarTarjeta"
+        class="form-check-input"
+        formControlName="usarTarjeta"
+      />
+      <label for="usarTarjeta" class="form-check-label"
+        >Usar tarjeta CINECO</label
+      >
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calcular</button>
+
+    <div class="mt-3">
+      <p>Valor a pagar: {{ valorPagar | currency }}</p>
+    </div>
+  </form>
+  <table class="table mt-4" *ngIf="ventas.length > 0">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Cantidad de boletos</th>
+        <th>Usar tarjeta</th>
+        <th>Valor a pagar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let venta of ventas">
+        <td>{{ venta.nombreCliente }}</td>
+        <td>{{ venta.cantidadBoletos }}</td>
+        <td>{{ venta.usarTarjeta ? "Sí" : "No" }}</td>
+        <td>{{ venta.valorPagar | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

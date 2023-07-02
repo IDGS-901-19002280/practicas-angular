@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import { PizzasComponent } from './pizzas/pizzas.component';
 import { ResistenciasComponent } from './resistencias/resistencias.component';
 import { DistanciaComponent } from './distancia/distancia.component';
+import { CineComponent } from './cine/cine.component';
 
 
 const routes:Routes=[
@@ -10,7 +11,7 @@ const routes:Routes=[
 {path:'PizzasComponent', component: PizzasComponent},
 {path:'ResistenciasComponent', component: ResistenciasComponent},
 {path: 'DistanciaComponent', component: DistanciaComponent},
-
+{path: 'CineComponent', component: CineComponent}
 ];
 
 @NgModule({
@@ -18,6 +19,4 @@ const routes:Routes=[
   exports:[RouterModule]
 })
 
-export class AppRoutingModule{
-
-}
+export class AppRoutingModule{}
